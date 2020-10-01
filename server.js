@@ -1,6 +1,7 @@
 // DEPENDENCIES
-const express = require('express');
+const express = require("express");
 const app = express();
+const marsMissions = require("./marsMissions.js");
 
 // run `npm install` to install dependencies in package.json
 
@@ -30,36 +31,36 @@ const marsMissions = [
     launchDate: "26 Nov 2011",
     operator: "NASA",
     missionType: "Rover",
-    img: ""
+    img: "",
   },
   {
     name: "Opportunity",
     launchDate: "8 Jul 2003",
     operator: "NASA",
     missionType: "Rover",
-    img: ""
+    img: "",
   },
   {
     name: "Spirit",
     launchDate: "10 Jun 2003",
     operator: "NASA",
     missionType: "Rover",
-    img: ""
+    img: "",
   },
   {
     name: "Sojourner",
     launchDate: "4 Dec 1996",
     operator: "NASA",
     missionType: "Rover",
-    img: ""
+    img: "",
   },
   {
     name: "Rosetta",
     launchDate: "2 Mar 2004",
     operator: "ESA",
     missionType: "Gravity Assist",
-    img: ""
-  }
+    img: "",
+  },
 ];
 
 // INDEX Route
@@ -71,11 +72,9 @@ const marsMissions = [
 // send data to 'missions/show.ejs' view
 // the view should display all the data for a single mission
 
-
-
 // LISTENER
-app.listen(port, function() {
-  console.log('Missions to Mars running on port: ', port);
-})
+app.listen(port, function () {
+  console.log("Missions to Mars running on port: ", port);
+});
 
-module.exports = app;
+module.exports = marsMissions;
