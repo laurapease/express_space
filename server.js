@@ -10,7 +10,8 @@ app.set("view engine", "ejs");
 //HOME ROUTE
 
 app.get("/", (req, res) => {
-  res.send("<h1>Missions</h1>");
+  // res.send("<h1>Missions</h1>");
+  res.render("index");
 });
 
 // marsMissions Controller
@@ -61,7 +62,7 @@ app.use("/marsMissions", marsMissionsCtrl);
 // views/missions folder has not been created
 
 // PORT
-const port = 3000;
+const port = 4000;
 
 // DATA - put into marsMissions.js file inside of a models folder, for module.exports
 // remember to require it in the server
