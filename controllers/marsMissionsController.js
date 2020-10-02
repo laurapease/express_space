@@ -13,6 +13,10 @@ router.get("/", (req, res) => {
   // console.log(marsMissions);
   //   res.send(marsMissions);
   //   res.render("index");
+
+  res.render("marsMissions/indexmarsMissions", {
+    marsMissions: marsMissions,
+  });
 });
 
 // SHOW MISSIONS
