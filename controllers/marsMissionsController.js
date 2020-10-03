@@ -1,5 +1,3 @@
-// const router = require("express").Router();
-
 const express = require("express");
 const router = express.Router();
 
@@ -12,26 +10,34 @@ const marsMissions = require("../models/Missions");
 router.get("/", (req, res) => {
   // console.log(marsMissions);
   //   res.send(marsMissions);
-
-  res.render("marsMissions/indexmarsMissions", {
-    marsMissions: marsMissions,
-  });
-});
+  //   res.render("index");
+    res.render('index', {
+        marsMissions: marsMissions,
+    }
+);
 
 // SHOW MISSIONS
 
 router.get("/:marsMissionsIndex", (req, res) => {
   const marsMissionsIndex = req.params.marsMissionsIndex;
-  const marsMission = marsMissions[marsMissionsIndex];
+    res.render('show', {
+        marsMissions: marsMissions[marsMissionsIndex]
+    })
 
-  //   if (marsMissions[marsMissionsIndex]) {
-  //     res.render("marsMissions/showmarsMissions", {
-  //       marsMissions: { name: "Does not exist" },
-  //     });
-  //   }
 
-  res.render("marsMissions/showmarsMissions", marsMission);
-});
+  //   const marsMission = marsMissions[marsMissionsIndex];
+
+//   if (marsMissions[marsMissionsIndex]) {
+//     res.send(marsMissions[marsMissionsIndex]);
+//   } else {
+//     res.send("Sorry, that mission does not exist.");
+//     res.render("marsMissions/showmarsMissions", {
+//       marsMissions: { name: "Does not exist" },
+//     });
+//   }
+
+//   res.render("/marsMissions/showmarsMissions", "marsMission");
+
 
 //   res.render("/marsMissions/showmarsMissions", "marsMission");
 
