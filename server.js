@@ -1,71 +1,45 @@
 // DEPENDENCIES
 const express = require("express");
 const app = express();
+const port = 3000;
 
-//MISSIONS
+// SET VIEW ENGINE
+app.set("view engine", "ejs");
 
-const marsMissions = [
-  {
-    name: "Curiosity",
-    launchDate: "26 Nov 2011",
-    operator: "NASA",
-    missionType: "Rover",
-    img: "",
-  },
-  {
-    name: "Opportunity",
-    launchDate: "8 Jul 2003",
-    operator: "NASA",
-    missionType: "Rover",
-    img: "",
-  },
-  {
-    name: "Spirit",
-    launchDate: "10 Jun 2003",
-    operator: "NASA",
-    missionType: "Rover",
-    img: "",
-  },
-  {
-    name: "Sojourner",
-    launchDate: "4 Dec 1996",
-    operator: "NASA",
-    missionType: "Rover",
-    img: "",
-  },
-  {
-    name: "Rosetta",
-    launchDate: "2 Mar 2004",
-    operator: "ESA",
-    missionType: "Gravity Assist",
-    img: "",
-  },
-];
+// MISSIONS CONTROLLER
 
-// const marsMissions
+const marsMissionsCtrl = require("./controllers/marsMissionsController");
+const marsMissions = require("./models/Mission");
 
 //HOME ROUTE
 
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to Mars Missions</h1>");
+  res.render("index");
+});
+
+// MISSIONS ROUTES
+
+app.use("/marsMissions", marsMissionsCtrl);
+
+app.listen(port, function () {
+  console.log("Missions to Mars running on port: ", port);
 });
 
 //INDEX ROUTE
 
-app.get("/marsMissions", (req, res) => {});
+// app.get("/marsMissions", (req, res) => {});
 
 //SHOW ROUTE
 
-app.get("/marsMissions/:missionsIndex", (req, res) => {
-  const missionsIndex = req.params.missionsIndex;
+// app.get("/marsMissions/:missionsIndex", (req, res) => {
+//   const missionsIndex = req.params.missionsIndex;
 
-  if (marsMissions[missionsIndex]) {
-    res.send(marsMissions[missionsIndex]);
-  } else {
-    res.send("Sorry, that mission does not exist.");
-  }
-});
-console.log(marsMissions);
+//   if (marsMissions[missionsIndex]) {
+//     res.send(marsMissions[missionsIndex]);
+//   } else {
+//     res.send("Sorry, that mission does not exist.");
+//   }
+// });
 
 // run `npm install` to install dependencies in package.json
 
@@ -85,7 +59,6 @@ console.log(marsMissions);
 // views/missions folder has not been created
 
 // PORT
-const port = 3000;
 
 // DATA - put into marsMissions.js file inside of a models folder, for module.exports
 // remember to require it in the server
@@ -100,6 +73,3 @@ const port = 3000;
 // the view should display all the data for a single mission
 
 // LISTENER
-app.listen(port, function () {
-  console.log("Missions to Mars running on port: ", port);
-});
