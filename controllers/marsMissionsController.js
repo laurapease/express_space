@@ -6,15 +6,15 @@ const marsMissions = require("../models/Mission");
 
 //MISSIONS MODEL
 
-const Mission = require("../models/Mission");
+const missions = require("../models/Mission");
 
 //INDEX ROUTE
 
 router.get("/", (req, res) => {
   // console.log(marsMissions);
   // res.send(marsMissions);
-  const marsMission = marsMissions;
-  res.render("missions/indexMissions", {
+  const marsMission = missions;
+  res.render("indexMissions", {
     marsMission: marsMission,
   });
 });
