@@ -3,43 +3,29 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-// SET VIEW ENGINE
+//SET VIEW ENGINE
+
 app.set("view engine", "ejs");
 
-// MISSIONS CONTROLLER
+//MISSIONS CONTROLLER
 
-const marsMissionsCtrl = require("./controllers/marsMissionsController");
+const missionsCtrl = require("./controllers/marsMissionsController");
 const marsMissions = require("./models/Mission");
 
 //HOME ROUTE
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("indexMissions");
 });
 
-// MISSIONS ROUTES
+//MISSIONS ROUTE
 
-app.use("/marsMissions", marsMissionsCtrl);
+app.use("/marsMissions", missionsCtrl);
 
+// LISTENER
 app.listen(port, function () {
   console.log("Missions to Mars running on port: ", port);
 });
-
-//INDEX ROUTE
-
-// app.get("/marsMissions", (req, res) => {});
-
-//SHOW ROUTE
-
-// app.get("/marsMissions/:missionsIndex", (req, res) => {
-//   const missionsIndex = req.params.missionsIndex;
-
-//   if (marsMissions[missionsIndex]) {
-//     res.send(marsMissions[missionsIndex]);
-//   } else {
-//     res.send("Sorry, that mission does not exist.");
-//   }
-// });
 
 // run `npm install` to install dependencies in package.json
 
@@ -62,6 +48,43 @@ app.listen(port, function () {
 
 // DATA - put into marsMissions.js file inside of a models folder, for module.exports
 // remember to require it in the server
+// const marsMissions = [
+//   {
+//     name: "Curiosity",
+//     launchDate: "26 Nov 2011",
+//     operator: "NASA",
+//     missionType: "Rover",
+//     img: "",
+//   },
+//   {
+//     name: "Opportunity",
+//     launchDate: "8 Jul 2003",
+//     operator: "NASA",
+//     missionType: "Rover",
+//     img: "",
+//   },
+//   {
+//     name: "Spirit",
+//     launchDate: "10 Jun 2003",
+//     operator: "NASA",
+//     missionType: "Rover",
+//     img: "",
+//   },
+//   {
+//     name: "Sojourner",
+//     launchDate: "4 Dec 1996",
+//     operator: "NASA",
+//     missionType: "Rover",
+//     img: "",
+//   },
+//   {
+//     name: "Rosetta",
+//     launchDate: "2 Mar 2004",
+//     operator: "ESA",
+//     missionType: "Gravity Assist",
+//     img: "",
+//   },
+// ];
 
 // INDEX Route
 // send data to 'missions/index.ejs' view
@@ -71,5 +94,3 @@ app.listen(port, function () {
 // SHOW Route
 // send data to 'missions/show.ejs' view
 // the view should display all the data for a single mission
-
-// LISTENER

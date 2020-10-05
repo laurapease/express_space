@@ -37,3 +37,5 @@ const marsMissions = [
 ];
 
 module.exports = marsMissions;
+
+console.log(marsMissions);
