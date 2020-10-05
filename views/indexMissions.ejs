@@ -6,6 +6,14 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Welcome to Mars Missions Index page (I hope)</h1>
+    <h1>Welcome to Mars Missions Index page</h1>
+
+    <ul>
+      <% for (let i = 0; i < marsMission.length; i++) { %>
+      <li style="margin-bottom: 20px">
+        <a href="/marsMissions/<%= i %>"> <%= marsMission[i].name %> </a>
+      </li>
+      <% } %>
+    </ul>
   </body>
 </html>

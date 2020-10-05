@@ -13,7 +13,7 @@ const missions = require("../models/Mission");
 router.get("/", (req, res) => {
   // console.log(marsMissions);
   // res.send(marsMissions);
-  const marsMission = missions;
+  const marsMission = marsMissions;
   res.render("indexMissions", {
     marsMission: marsMission,
   });
